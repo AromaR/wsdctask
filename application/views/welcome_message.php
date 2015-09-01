@@ -72,8 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div><h1>Welcome to the Registration Portal!</h1></div>
 
 	<div id="body">
-
-		<form role="form" action="Welcome.php/update" method="POST">
+		<form role="form" method="POST" action="<?php echo base_url()?>update.php">>
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" class="form-control" name="name" >
@@ -91,10 +90,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input type="email" class="form-control" name="email">
   </div>
   <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" name="pwd">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" name="password">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <input type="submit" name="rand" value="Register"/> 
+		
 </form>
 	</div>
 

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	/**
+	/** shd i rename it registration nope
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
@@ -21,29 +21,37 @@ class Welcome extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('auth/ion_auth');
+		$this->load->helper('form');
+		$this->load->helper('url');
+		
 		$this->load->model('reg_model');
 		
 		
-		$this->lang->load('sample' , 'english');
+		//$this->lang->load('sample' , 'english');
 	}
 
 	public function index()
 	{
 		$this->load->view('welcome_message');
 		$data['scripts'] = array('auth/jquery.dataTables.min.js','dataTables.bootstrap.js','auth/table.js');
+
+		//$this->reg_model->updatedata($data);  
+
+		
+
+
 	}
-	public function update(){
-		$data['scripts'] = array('auth/jquery.dataTables.min.js','dataTables.bootstrap.js','auth/table.js');
+	public function update()
+	{
 		$data = array(
             'name' => $this->input->post('name'),
             'branch' => $this->input->post('branch'),
             'roll_no' => $this->input->post('roll_no'),
             'email' => $this->input->post('email'),
-            'pwd' => $this->input->post('password'),
+            'password' => $this->input->post('password'),
         );
-		if($this->reg_model->update($data)){
-			redirect("submitted/");
-		}
+		 $this->tables  = $this->config->item('tables', 'reg_det'); 
+		 
 	}
+	
 }
